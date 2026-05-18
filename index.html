@@ -470,7 +470,7 @@ tr:hover td{background:var(--surface2)}
       <div class="login-error" id="login-error">Email ou password incorretos.</div>
       <div class="form-group">
         <label class="form-label">Email</label>
-        <input class="form-input" id="login-email" type="email" placeholder="nome@centrosocialareosa.pt" autocomplete="email">
+        <input class="form-input" id="login-email" type="email" placeholder="nome@centrosocialareosa.pt" autocomplete="email" autofocus>
       </div>
       <div class="form-group">
         <label class="form-label">Password</label>
@@ -974,24 +974,28 @@ const Pe = r => ({ id:r.id, mat:r.matricula, titulo:r.titulo, desc:r.descricao||
 let alertsCache = [];
 function runAlertCheck() {
   const today = new Date(); alertsCache = []; const log = [];
+  const warnedVehicles = new Set();
   log.push({ t:'h', m:`[${now()}] CSA Areosa · ${frota.length} viatura(s)` });
   frota.map(V).forEach(vt => {
     const nR = vt.uRKm + vt.ri, kL = nR - vt.km;
-    if      (kL <= 0)    { alertsCache.push({ type:'critico', emoji:'🔧', title:`Revisão VENCIDA — ${vt.mat}`, sub:`${fmt(vt.km)} km · Era aos ${fmt(nR)} km` }); log.push({ t:'b', m:`  ✖ ${vt.mat} — revisão vencida` }); }
-    else if (kL <= 1500) { alertsCache.push({ type:'proximo', emoji:'🔧', title:`Revisão próxima — ${vt.mat}`, sub:`Faltam ${fmt(kL)} km` });                      log.push({ t:'w', m:`  ~ ${vt.mat} — revisão em ${fmt(kL)} km` }); }
+    if      (kL <= 0)    { alertsCache.push({ type:'critico', emoji:'🔧', title:`Revisão VENCIDA — ${vt.mat}`, sub:`${fmt(vt.km)} km · Era aos ${fmt(nR)} km` }); warnedVehicles.add(vt.mat); log.push({ t:'b', m:`  ✖ ${vt.mat} — revisão vencida` }); }
+    else if (kL <= 1500) { alertsCache.push({ type:'proximo', emoji:'🔧', title:`Revisão próxima — ${vt.mat}`, sub:`Faltam ${fmt(kL)} km` }); warnedVehicles.add(vt.mat); log.push({ t:'w', m:`  ~ ${vt.mat} — revisão em ${fmt(kL)} km` }); }
     else                  log.push({ t:'o', m:`  ✓ ${vt.mat} — km OK (faltam ${fmt(kL)} km)` });
     if (vt.seg) {
       const d = dDiff(today, vt.seg);
-      if      (d < 0)   { alertsCache.push({ type:'critico', emoji:'🛡️', title:`Seguro VENCIDO — ${vt.mat}`, sub:`Venceu há ${Math.abs(d)} dias` }); log.push({ t:'b', m:`  ✖ ${vt.mat} — seguro vencido` }); }
-      else if (d <= 30) { alertsCache.push({ type:'proximo', emoji:'🛡️', title:`Seguro vence — ${vt.mat}`, sub:`${fd(vt.seg)} · ${d} dias` }); log.push({ t:'w', m:`  ~ ${vt.mat} — seguro ${d}d` }); }
+      if      (d < 0)   { alertsCache.push({ type:'critico', emoji:'🛡️', title:`Seguro VENCIDO — ${vt.mat}`, sub:`Venceu há ${Math.abs(d)} dias` }); warnedVehicles.add(vt.mat); log.push({ t:'b', m:`  ✖ ${vt.mat} — seguro vencido` }); }
+      else if (d <= 30) { alertsCache.push({ type:'proximo', emoji:'🛡️', title:`Seguro vence — ${vt.mat}`, sub:`${fd(vt.seg)} · ${d} dias` }); warnedVehicles.add(vt.mat); log.push({ t:'w', m:`  ~ ${vt.mat} — seguro ${d}d` }); }
       else               log.push({ t:'o', m:`  ✓ ${vt.mat} — seguro OK` });
     }
     if (vt.ins) {
       const d = dDiff(today, vt.ins);
-      if      (d < 0)   { alertsCache.push({ type:'critico', emoji:'🔍', title:`Inspeção VENCIDA — ${vt.mat}`, sub:`Venceu há ${Math.abs(d)} dias · ilegal` }); log.push({ t:'b', m:`  ✖ ${vt.mat} — inspeção vencida` }); }
-      else if (d <= 45) { alertsCache.push({ type:'proximo', emoji:'🔍', title:`Inspeção próxima — ${vt.mat}`, sub:`${fd(vt.ins)} · ${d} dias` }); log.push({ t:'w', m:`  ~ ${vt.mat} — inspeção ${d}d` }); }
+      if      (d < 0)   { alertsCache.push({ type:'critico', emoji:'🔍', title:`Inspeção VENCIDA — ${vt.mat}`, sub:`Venceu há ${Math.abs(d)} dias · ilegal` }); warnedVehicles.add(vt.mat); log.push({ t:'b', m:`  ✖ ${vt.mat} — inspeção vencida` }); }
+      else if (d <= 45) { alertsCache.push({ type:'proximo', emoji:'🔍', title:`Inspeção próxima — ${vt.mat}`, sub:`${fd(vt.ins)} · ${d} dias` }); warnedVehicles.add(vt.mat); log.push({ t:'w', m:`  ~ ${vt.mat} — inspeção ${d}d` }); }
       else               log.push({ t:'o', m:`  ✓ ${vt.mat} — inspeção OK` });
     }
+  });
+  frota.map(V).filter(vt=>!warnedVehicles.has(vt.mat)).forEach(vt=>{
+    alertsCache.push({ type:'ok', emoji:'✅', title:`${vt.mat} — Tudo em dia`, sub:`${vt.modelo||'—'} · ${fmt(vt.km)} km` });
   });
   const nC = alertsCache.filter(a=>a.type==='critico').length;
   const nW = alertsCache.filter(a=>a.type==='proximo').length;
@@ -1011,9 +1015,9 @@ function runAlertCheck() {
 function dDiff(f, t) { return Math.ceil((new Date(t) - f) / 86400000); }
 function renderAlerts(filter) {
   const el = document.getElementById('alert-container'); if (!el) return;
-  const arr = filter==='todos' ? alertsCache : filter==='ok' ? [] : alertsCache.filter(a=>a.type===filter);
+  const arr = filter==='todos' ? alertsCache.filter(a=>a.type!=='ok') : alertsCache.filter(a=>a.type===filter);
   if (!arr.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">✅</div><div class="empty-text">Tudo em dia nesta categoria!</div></div>'; return; }
-  el.innerHTML = arr.map(a=>`<div class="alert-item ${a.type==='critico'?'crit':''}"><div class="alert-emoji">${a.emoji}</div><div class="alert-body"><div class="alert-title">${a.title}</div><div class="alert-sub">${a.sub}</div></div><span class="abadge ${a.type==='critico'?'bc':'bw'}">${a.type==='critico'?'CRÍTICO':'ATENÇÃO'}</span></div>`).join('');
+  el.innerHTML = arr.map(a=>`<div class="alert-item ${a.type==='critico'?'crit':a.type==='ok'?'aok':''}"><div class="alert-emoji">${a.emoji}</div><div class="alert-body"><div class="alert-title">${a.title}</div><div class="alert-sub">${a.sub}</div></div><span class="abadge ${a.type==='critico'?'bc':a.type==='ok'?'bo':'bw'}">${a.type==='critico'?'CRÍTICO':a.type==='ok'?'OK':'ATENÇÃO'}</span></div>`).join('');
 }
 function renderAlertLog() {
   const el = document.getElementById('alert-log'); if (!el) return;
@@ -1207,7 +1211,7 @@ async function enviarPedido() {
   try {
     const r = await fetch('https://api.anthropic.com/v1/messages', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:500,
+      body: JSON.stringify({ model:'claude-sonnet-4-6', max_tokens:500,
         system:'Assistente de frota do Centro Social da Paróquia da Areosa (IPSS, Porto). Escreve emails profissionais em português europeu. Responde APENAS com o corpo do email, sem assunto nem linhas extra.',
         messages:[{ role:'user', content:`Pedido de manutenção:\nViatura: ${mat} (${vt.modelo||'N/D'})\nProblema: ${titulo}\nDescrição: ${desc||'—'}\nUrgência: ${urgLabel}\nData: ${fd(data)}\nReportado por: ${currentUser?.email||'Colaborador'}` }] })
     });
@@ -1372,6 +1376,7 @@ async function initApp() {
   setInterval(runAlertCheck, 30000);
 }
 // Enter key on login
+document.getElementById('login-email').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('login-pass').focus(); });
 document.getElementById('login-pass').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
 // Boot
 checkSession();
