@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#1b3a2d">
 <title>CSA Frota — Centro Social da Areosa</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -22,7 +22,7 @@
   --success:#40916c; --warning:#e9a23b; --danger:#e63946;
   --sidebar-bg:#1b3a2d; --sidebar-text:rgba(255,255,255,.55);
   --sidebar-active:rgba(255,255,255,.14); --sidebar-label:rgba(255,255,255,.22);
-  --shadow:0 2px 16px rgba(0,0,0,.07); --radius:12px;
+  --shadow:0 2px 16px rgba(0,0,0,.07); --radius:4px;
   --nav-h:62px; --header-h:52px;
 }
 [data-theme="dark"] {
@@ -41,7 +41,7 @@
 ═══════════════════════════════════════════ */
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;transition:background .2s,color .2s}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);
      display:flex;min-height:100vh;overflow-x:hidden}
 
 /* ═══════════════════════════════════════════
@@ -51,7 +51,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
   display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px}
 .spinner{width:36px;height:36px;border:3px solid var(--border);
   border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
-.load-text{font-size:.84rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.load-text{font-size:.84rem;color:var(--muted);font-family:'IBM Plex Mono',monospace}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ═══════════════════════════════════════════
@@ -66,10 +66,10 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
   border:2px solid rgba(255,255,255,.15)}
 .login-org-name{font-size:1.05rem;font-weight:800;color:#fff;text-align:center;line-height:1.25}
 .login-org-sub{font-size:.72rem;color:rgba(255,255,255,.4);text-align:center;margin-top:3px;
-  font-family:'JetBrains Mono',monospace}
+  font-family:'IBM Plex Mono',monospace}
 .login-box{background:var(--surface);border-radius:20px;padding:32px 28px;width:100%;
   box-shadow:0 32px 80px rgba(0,0,0,.35);animation:modalIn .3s ease}
-.login-title{font-size:1.15rem;font-weight:800;margin-bottom:3px}
+.login-title{font-size:1.05rem;font-weight:700;margin-bottom:3px}
 .login-sub{font-size:.77rem;color:var(--muted);margin-bottom:22px}
 .login-error{background:rgba(230,57,70,.08);border:1px solid rgba(230,57,70,.2);
   color:var(--danger);font-size:.77rem;padding:10px 14px;border-radius:8px;
@@ -85,12 +85,12 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
   display:flex;align-items:center;gap:11px}
 .logo-icon-sq{width:38px;height:38px;background:var(--accent);border-radius:9px;
   display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
-.logo-name{font-size:.88rem;font-weight:800;color:#fff;line-height:1.15}
-.logo-sub{font-size:.56rem;color:var(--sidebar-label);font-family:'JetBrains Mono',monospace;
+.logo-name{font-size:.82rem;font-weight:700;color:#fff;line-height:1.15}
+.logo-sub{font-size:.56rem;color:var(--sidebar-label);font-family:'IBM Plex Mono',monospace;
   text-transform:uppercase;letter-spacing:.09em;margin-top:2px}
 .nav{padding:12px 8px;flex:1}
 .nav-sec{font-size:.55rem;text-transform:uppercase;letter-spacing:.16em;
-  color:var(--sidebar-label);font-family:'JetBrains Mono',monospace;
+  color:var(--sidebar-label);font-family:'IBM Plex Mono',monospace;
   padding:8px 12px 5px;margin-top:4px}
 .nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;
   cursor:pointer;font-size:.82rem;font-weight:500;color:var(--sidebar-text);transition:all .15s}
@@ -104,7 +104,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
 .dm-toggle{display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 12px;
   border-radius:8px;transition:background .15s;user-select:none}
 .dm-toggle:hover{background:var(--sidebar-active)}
-.dm-lbl{font-size:.7rem;color:var(--sidebar-text);font-family:'JetBrains Mono',monospace;
+.dm-lbl{font-size:.7rem;color:var(--sidebar-text);font-family:'IBM Plex Mono',monospace;
   text-transform:uppercase;letter-spacing:.06em}
 .dm-sw{width:32px;height:17px;background:rgba(255,255,255,.14);border-radius:99px;
   position:relative;transition:background .2s;flex-shrink:0}
@@ -173,10 +173,10 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
 ═══════════════════════════════════════════ */
 .topbar{display:flex;align-items:flex-start;justify-content:space-between;
   margin-bottom:24px;gap:12px;flex-wrap:wrap}
-.page-title{font-size:1.7rem;font-weight:800;letter-spacing:-.6px}
+.page-title{font-size:1.3rem;font-weight:700;letter-spacing:0}
 .page-desc{font-size:.77rem;color:var(--muted);margin-top:3px}
 .topbar-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
-.btn{padding:9px 16px;border-radius:8px;border:none;font-family:'Outfit',sans-serif;
+.btn{padding:9px 16px;border-radius:8px;border:none;font-family:'Inter',sans-serif;
   font-weight:600;font-size:.78rem;cursor:pointer;transition:all .15s;
   display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
@@ -202,14 +202,14 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
   justify-content:center;font-size:1rem}
 .si-g{background:var(--accent-light)}.si-r{background:rgba(230,57,70,.1)}
 .si-o{background:rgba(233,162,59,.1)}.si-t{background:rgba(64,145,108,.1)}
-.stat-trend{font-size:.62rem;font-weight:700;font-family:'JetBrains Mono',monospace;
+.stat-trend{font-size:.62rem;font-weight:700;font-family:'IBM Plex Mono',monospace;
   padding:3px 7px;border-radius:20px}
 .tr-ok{background:rgba(64,145,108,.12);color:var(--success)}
 .tr-warn{background:rgba(233,162,59,.12);color:var(--warning)}
 .tr-bad{background:rgba(230,57,70,.1);color:var(--danger)}
-.stat-val{font-size:1.9rem;font-weight:800;letter-spacing:-1.5px;line-height:1}
+.stat-val{font-size:1.7rem;font-weight:700;letter-spacing:-.2px;line-height:1}
 .stat-label{font-size:.65rem;color:var(--muted);margin-top:4px;text-transform:uppercase;
-  letter-spacing:.06em;font-family:'JetBrains Mono',monospace}
+  letter-spacing:.06em;font-family:'IBM Plex Mono',monospace}
 
 /* ═══════════════════════════════════════════
    ALERTS
@@ -219,18 +219,18 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
 .banner-crit{background:rgba(230,57,70,.08);border:1px solid rgba(230,57,70,.2);color:var(--danger)}
 .alerts-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
 .section-label{font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;
-  color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:10px}
+  color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-bottom:10px}
 .alert-list{display:flex;flex-direction:column;gap:6px}
 .alert-item{background:var(--surface);border:1px solid var(--border);
   border-left:3px solid var(--warning);border-radius:8px;padding:10px 13px;
   display:flex;align-items:center;gap:10px}
 .alert-item.crit{border-left-color:var(--danger)}
 .alert-item.aok{border-left-color:var(--success)}
-.alert-emoji{font-size:.9rem;flex-shrink:0}
+.alert-type-dot{width:6px;height:6px;border-radius:50%;background:var(--warning);flex-shrink:0;margin-top:6px}.alert-item.crit .alert-type-dot{background:var(--danger)}.alert-item.aok .alert-type-dot{background:var(--success)}
 .alert-body{flex:1;min-width:0}
 .alert-title{font-size:.78rem;font-weight:600}
 .alert-sub{font-size:.66rem;color:var(--muted);margin-top:1px;
-  font-family:'JetBrains Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  font-family:'IBM Plex Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .abadge{font-size:.58rem;font-weight:700;padding:2px 7px;border-radius:20px;
   text-transform:uppercase;flex-shrink:0;white-space:nowrap}
 .bw{background:rgba(233,162,59,.12);color:var(--warning)}
@@ -247,12 +247,12 @@ table{width:100%;border-collapse:collapse;font-size:.79rem}
 thead tr{border-bottom:2px solid var(--border)}
 th{text-align:left;padding:9px 12px;font-size:.6rem;text-transform:uppercase;
   letter-spacing:.1em;color:var(--muted);font-weight:600;
-  font-family:'JetBrains Mono',monospace;white-space:nowrap}
+  font-family:'IBM Plex Mono',monospace;white-space:nowrap}
 td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:var(--surface2)}
 .mat-badge{font-size:.68rem;font-weight:700;padding:3px 8px;border-radius:6px;
-  background:var(--accent);color:#fff;font-family:'JetBrains Mono',monospace;white-space:nowrap}
+  background:var(--accent);color:#fff;font-family:'IBM Plex Mono',monospace;white-space:nowrap}
 .status-dot{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;font-weight:500;white-space:nowrap}
 .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .dok{background:var(--success)}.dwarn{background:var(--warning)}.dbad{background:var(--danger)}
@@ -260,9 +260,9 @@ tr:hover td{background:var(--surface2)}
 .km-bar{flex:1;height:4px;background:var(--surface2);border-radius:99px;overflow:hidden}
 .km-fill{height:100%;border-radius:99px;background:var(--accent3);transition:width .4s}
 .km-fill.warn{background:var(--warning)}.km-fill.crit{background:var(--danger)}
-.km-text{font-size:.67rem;font-family:'JetBrains Mono',monospace;color:var(--muted);white-space:nowrap}
+.km-text{font-size:.67rem;font-family:'IBM Plex Mono',monospace;color:var(--muted);white-space:nowrap}
 .act-btn{background:var(--surface2);border:1px solid var(--border);border-radius:6px;
-  padding:4px 8px;font-size:.66rem;cursor:pointer;font-family:'Outfit',sans-serif;
+  padding:4px 8px;font-size:.66rem;cursor:pointer;font-family:'Inter',sans-serif;
   font-weight:600;color:var(--text);transition:all .12s;margin-right:3px;white-space:nowrap}
 .act-btn:hover{background:var(--border)}
 .km-btn{background:var(--accent-light);color:var(--accent);border:1px solid rgba(45,106,79,.2);
@@ -278,20 +278,20 @@ tr:hover td{background:var(--surface2)}
   background:rgba(0,0,0,.55);backdrop-filter:blur(4px);
   align-items:flex-end;justify-content:center}
 .modal-overlay.open{display:flex}
-.modal{background:var(--surface);border-radius:20px 20px 0 0;
+.modal{background:var(--surface);border-radius:6px 6px 0 0;
   padding:24px 22px 36px;width:100%;max-width:560px;
   max-height:92vh;overflow-y:auto;
   box-shadow:0 -8px 40px rgba(0,0,0,.2);animation:slideUp .28s ease;
   border:1px solid var(--border)}
 .modal-drag{width:40px;height:4px;background:var(--border);border-radius:99px;margin:0 auto 18px}
-.modal-title{font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:3px}
+.modal-title{font-size:1rem;font-weight:700;letter-spacing:-.3px;margin-bottom:3px}
 .modal-sub{font-size:.76rem;color:var(--muted);margin-bottom:18px}
 .form-group{margin-bottom:14px}
 .form-label{display:block;font-size:.68rem;font-weight:600;text-transform:uppercase;
   letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
 .form-input,.form-select,.form-textarea{width:100%;background:var(--surface2);
   border:1px solid var(--border);border-radius:9px;padding:12px 14px;
-  font-family:'Outfit',sans-serif;font-size:16px;color:var(--text);
+  font-family:'Inter',sans-serif;font-size:16px;color:var(--text);
   outline:none;transition:border .15s;-webkit-appearance:none}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--accent);background:var(--surface)}
 .form-textarea{min-height:80px;resize:vertical}
@@ -313,9 +313,9 @@ tr:hover td{background:var(--surface2)}
 .h-item:last-child .h-line{display:none}
 .h-body{flex:1;min-width:0}
 .h-title{font-size:.81rem;font-weight:600}
-.h-meta{font-size:.66rem;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px}
+.h-meta{font-size:.66rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:2px}
 .h-cost{font-size:.78rem;font-weight:700;color:var(--accent);
-  font-family:'JetBrains Mono',monospace;white-space:nowrap}
+  font-family:'IBM Plex Mono',monospace;white-space:nowrap}
 .h-type{font-size:.59rem;font-weight:700;padding:2px 6px;border-radius:20px;
   text-transform:uppercase;margin-top:4px;display:inline-block}
 .tp{background:rgba(64,145,108,.1);color:var(--success)}
@@ -341,12 +341,12 @@ tr:hover td{background:var(--surface2)}
 .pedido-urg{width:5px;flex-shrink:0;align-self:stretch;border-radius:4px;margin-top:2px}
 .ua{background:var(--danger)}.um{background:var(--warning)}.ub{background:var(--success)}
 .pedido-body{flex:1;min-width:0}
-.pedido-mat{font-size:.65rem;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:3px}
+.pedido-mat{font-size:.65rem;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-bottom:3px}
 .pedido-prob{font-size:.84rem;font-weight:600}
 .pedido-desc{font-size:.74rem;color:var(--muted);margin-top:3px;
   overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .pedido-footer{display:flex;align-items:center;gap:8px;margin-top:9px;flex-wrap:wrap}
-.pedido-date{font-size:.63rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.pedido-date{font-size:.63rem;color:var(--muted);font-family:'IBM Plex Mono',monospace}
 .ped-status{font-size:.59rem;font-weight:700;padding:2px 7px;border-radius:20px;text-transform:uppercase}
 .sp{background:rgba(233,162,59,.1);color:var(--warning)}
 .spg{background:rgba(64,145,108,.1);color:var(--success)}
@@ -358,7 +358,7 @@ tr:hover td{background:var(--surface2)}
    EMAIL LOG
 ═══════════════════════════════════════════ */
 .email-log{background:#0a0f0d;color:rgba(255,255,255,.75);border-radius:9px;
-  padding:13px 15px;font-family:'JetBrains Mono',monospace;font-size:.67rem;
+  padding:13px 15px;font-family:'IBM Plex Mono',monospace;font-size:.67rem;
   line-height:1.85;max-height:180px;overflow-y:auto}
 .lh{color:#f4a261;font-weight:700}.lo{color:#52b788}.lb{color:#e63946}.ln{color:rgba(255,255,255,.35)}
 
@@ -376,11 +376,11 @@ tr:hover td{background:var(--surface2)}
    MISC
 ═══════════════════════════════════════════ */
 .checker-bar{display:flex;align-items:center;gap:6px;font-size:.67rem;
-  font-family:'JetBrains Mono',monospace;color:var(--muted)}
+  font-family:'IBM Plex Mono',monospace;color:var(--muted)}
 .cdot{width:6px;height:6px;border-radius:50%;background:var(--success);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .db-badge{display:inline-flex;align-items:center;gap:4px;font-size:.62rem;
-  font-family:'JetBrains Mono',monospace;padding:3px 8px;border-radius:20px;font-weight:700}
+  font-family:'IBM Plex Mono',monospace;padding:3px 8px;border-radius:20px;font-weight:700}
 .db-on{background:rgba(64,145,108,.1);color:var(--success)}
 .db-off{background:rgba(233,162,59,.1);color:var(--warning)}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -418,7 +418,7 @@ tr:hover td{background:var(--surface2)}
   .mob-header{display:flex!important}
   .mob-nav{display:block!important}
   .main{padding:calc(var(--header-h) + 14px) 14px calc(var(--nav-h) + 18px)}
-  .page-title{font-size:1.4rem}
+  .page-title{font-size:1.2rem}
   .page-desc{font-size:.72rem}
   .stats-grid{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
   .stat-card{padding:14px}
@@ -458,7 +458,7 @@ tr:hover td{background:var(--surface2)}
 <div id="login-screen">
   <div class="login-wrap">
     <div style="text-align:center">
-      <div class="login-logo-circle">🏠</div>
+      <div class="login-logo-circle" style="font-size:.8rem;font-weight:700;letter-spacing:.06em;color:#fff">CSA</div>
       <div style="margin-top:12px">
         <div class="login-org-name">Centro Social da Areosa</div>
         <div class="login-org-sub">Gestão de Frota · Sistema Interno</div>
@@ -477,7 +477,7 @@ tr:hover td{background:var(--surface2)}
         <input class="form-input" id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password">
       </div>
       <button class="btn btn-primary btn-full" id="btn-login" onclick="doLogin()">Entrar →</button>
-      <div style="font-size:.67rem;color:var(--muted);margin-top:12px;text-align:center;font-family:'JetBrains Mono',monospace;line-height:1.7">
+      <div style="font-size:.67rem;color:var(--muted);margin-top:12px;text-align:center;font-family:'IBM Plex Mono',monospace;line-height:1.7">
         Credenciais criadas pelo administrador<br>
         <span style="color:var(--accent)">geral@centrosocialareosa.pt</span>
       </div>
@@ -488,11 +488,11 @@ tr:hover td{background:var(--surface2)}
 <!-- MOBILE HEADER -->
 <header class="mob-header" id="mob-header" style="display:none">
   <div class="mob-logo">
-    <div class="mob-logo-icon">🏠</div>
+    <div class="mob-logo-icon" style="font-size:.55rem;font-weight:700;letter-spacing:.05em;color:#fff">CSA</div>
     <div class="mob-logo-text">CSA Frota</div>
   </div>
   <div class="mob-header-r">
-    <button class="mob-dm-btn" id="mob-dm-btn" onclick="toggleDark()">🌙</button>
+    <button class="mob-dm-btn" id="mob-dm-btn" onclick="toggleDark()" style="font-size:.6rem;font-weight:600;color:rgba(255,255,255,.5)">Escuro</button>
     <div class="mob-user-av" id="mob-user-av" title="Utilizador">--</div>
   </div>
 </header>
@@ -500,7 +500,7 @@ tr:hover td{background:var(--surface2)}
 <!-- DESKTOP SIDEBAR -->
 <nav class="sidebar" id="sidebar" style="display:none">
   <div class="logo-area">
-    <div class="logo-icon-sq">🏠</div>
+    <div class="logo-icon-sq" style="font-size:.6rem;font-weight:700;letter-spacing:.05em;color:#fff">CSA</div>
     <div><div class="logo-name">CSA Areosa</div><div class="logo-sub">Gestão de Frota</div></div>
   </div>
   <div class="nav">
@@ -529,7 +529,7 @@ tr:hover td{background:var(--surface2)}
   <div class="sidebar-bottom">
     <div class="dm-toggle" onclick="toggleDark()">
       <div class="dm-sw" id="dm-sw"><div class="dm-knob"></div></div>
-      <span class="dm-lbl" id="dm-lbl">Dark Mode</span>
+      <span class="dm-lbl" id="dm-lbl">Modo escuro</span>
     </div>
     <div class="divider"></div>
     <div class="user-row">
@@ -581,18 +581,18 @@ tr:hover td{background:var(--surface2)}
         <div class="page-desc" id="dash-desc">Centro Social da Areosa · A carregar...</div>
       </div>
       <div class="topbar-actions">
-        <div class="checker-bar"><div class="cdot"></div>A monitorizar</div>
+        <div class="checker-bar"><div class="cdot"></div>Em monitorização</div>
         <span class="db-badge db-on" id="db-indicator">● Supabase</span>
-        <button class="btn btn-primary" onclick="openModal('modal-nova-viatura')">+ Nova Viatura</button>
+        <button class="btn btn-primary" onclick="openModal('modal-nova-viatura')">Nova Viatura</button>
       </div>
     </div>
     <div id="crit-banner"></div>
     <div class="stats-grid" id="dash-stats"></div>
     <div class="alerts-row">
-      <div><div class="section-label">🔴 Alertas Críticos</div><div id="dash-crit" class="alert-list"></div></div>
-      <div><div class="section-label">🟡 Próximos Prazos</div><div id="dash-warn" class="alert-list"></div></div>
+      <div><div class="section-label">Alertas Críticos</div><div id="dash-crit" class="alert-list"></div></div>
+      <div><div class="section-label">Próximos Prazos</div><div id="dash-warn" class="alert-list"></div></div>
     </div>
-    <div class="section-label">📋 Últimas Manutenções</div>
+    <div class="section-label">Últimas Manutenções</div>
     <div class="card" style="padding:0">
       <div class="table-wrap">
         <table><thead><tr><th>Matrícula</th><th>Intervenção</th><th>Data</th><th>Custo</th><th>Tipo</th></tr></thead>
@@ -606,8 +606,8 @@ tr:hover td{background:var(--surface2)}
     <div class="topbar">
       <div><div class="page-title">Frota</div><div class="page-desc">Viaturas do Centro Social da Areosa</div></div>
       <div class="topbar-actions">
-        <button class="btn btn-ghost" onclick="exportCSV()">⬇ CSV</button>
-        <button class="btn btn-primary" onclick="openModal('modal-nova-viatura')">+ Adicionar</button>
+        <button class="btn btn-ghost" onclick="exportCSV()">Exportar CSV</button>
+        <button class="btn btn-primary" onclick="openModal('modal-nova-viatura')">Adicionar</button>
       </div>
     </div>
     <div class="card" style="padding:0">
@@ -622,7 +622,7 @@ tr:hover td{background:var(--surface2)}
   <div class="page" id="page-alertas">
     <div class="topbar">
       <div><div class="page-title">Alertas</div><div class="page-desc">Monitorização automática · km, seguros e inspeções</div></div>
-      <button class="btn btn-ghost" onclick="runAlertCheck()">🔄 Verificar agora</button>
+      <button class="btn btn-ghost" onclick="runAlertCheck()">Verificar agora</button>
     </div>
     <div class="tabs">
       <div class="tab active" onclick="filterAlerts('todos',this)">Todos</div>
@@ -632,7 +632,7 @@ tr:hover td{background:var(--surface2)}
     </div>
     <div id="alert-container" class="alert-list" style="gap:6px"></div>
     <div style="margin-top:22px">
-      <div class="section-label">📜 Log do sistema</div>
+      <div class="section-label">Log do sistema</div>
       <div class="email-log" id="alert-log"></div>
     </div>
   </div>
@@ -642,8 +642,8 @@ tr:hover td{background:var(--surface2)}
     <div class="topbar">
       <div><div class="page-title">Manutenções</div><div class="page-desc">Histórico completo · Supabase</div></div>
       <div class="topbar-actions">
-        <button class="btn btn-ghost" onclick="exportManCSV()">⬇ CSV</button>
-        <button class="btn btn-primary" onclick="openModal('modal-nova-manutencao')">+ Registar</button>
+        <button class="btn btn-ghost" onclick="exportManCSV()">Exportar CSV</button>
+        <button class="btn btn-primary" onclick="openModal('modal-nova-manutencao')">Registar</button>
       </div>
     </div>
     <div class="tabs" id="man-tabs"></div>
@@ -657,7 +657,7 @@ tr:hover td{background:var(--surface2)}
   <div class="page" id="page-pedidos">
     <div class="topbar">
       <div><div class="page-title">Pedidos</div><div class="page-desc">Email automático ao responsável via IA</div></div>
-      <button class="btn btn-primary" onclick="openModal('modal-pedido')">+ Novo Pedido</button>
+      <button class="btn btn-primary" onclick="openModal('modal-pedido')">Novo Pedido</button>
     </div>
     <div id="pedidos-list"></div>
   </div>
@@ -668,24 +668,24 @@ tr:hover td{background:var(--surface2)}
     <div style="max-width:600px;display:flex;flex-direction:column;gap:16px">
 
       <div class="card">
-        <div style="font-size:.9rem;font-weight:800;margin-bottom:10px">🗄️ Supabase</div>
+        <div style="font-size:.9rem;font-weight:800;margin-bottom:10px">Supabase</div>
         <div style="background:rgba(64,145,108,.08);border:1px solid rgba(64,145,108,.2);border-radius:8px;padding:10px 13px;font-size:.77rem;font-weight:600;color:var(--success)">
-          ✅ Ligado · weenveknkghlxngpxhvp.supabase.co
+          Ligado · weenveknkghlxngpxhvp.supabase.co
         </div>
         <div style="margin-top:9px;font-size:.74rem;color:var(--muted)">Dados em tempo real. Acessível em qualquer dispositivo.</div>
       </div>
 
       <div class="card">
-        <div style="font-size:.9rem;font-weight:800;margin-bottom:4px">📧 EmailJS</div>
+        <div style="font-size:.9rem;font-weight:800;margin-bottom:4px">EmailJS</div>
         <div style="font-size:.74rem;color:var(--muted);margin-bottom:12px">Emails automáticos ao criar pedidos de manutenção</div>
-        <div id="ejs-status" style="font-size:.73rem;font-weight:600;margin-bottom:12px;padding:9px 12px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid rgba(233,162,59,.2);color:var(--warning)">⚠️ Não configurado — emails simulados</div>
+        <div id="ejs-status" style="font-size:.73rem;font-weight:600;margin-bottom:12px;padding:9px 12px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid rgba(233,162,59,.2);color:var(--warning)">Não configurado — emails simulados</div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">Service ID</label><input class="form-input" id="cfg-service" placeholder="service_xxxxxxx"></div>
           <div class="form-group"><label class="form-label">Template ID</label><input class="form-input" id="cfg-template" placeholder="template_xxxxxxx"></div>
         </div>
         <div class="form-group"><label class="form-label">Public Key</label><input class="form-input" id="cfg-pubkey" placeholder="xxxxxxxxxxxxxxxxxxxx"></div>
         <div class="form-group"><label class="form-label">Email destino</label><input class="form-input" id="cfg-email-to" value="geral@centrosocialareosa.pt"></div>
-        <button class="btn btn-primary btn-full" onclick="saveEJSConfig()">💾 Guardar e Activar</button>
+        <button class="btn btn-primary btn-full" onclick="saveEJSConfig()">Guardar e Activar</button>
         <div class="cfg-note">
           <strong>Como configurar:</strong><br>
           1. <a href="https://emailjs.com" target="_blank" style="color:var(--accent)">emailjs.com</a> → conta gratuita<br>
@@ -696,26 +696,26 @@ tr:hover td{background:var(--surface2)}
       </div>
 
       <div class="card">
-        <div style="font-size:.9rem;font-weight:800;margin-bottom:4px">👥 Criar Utilizador</div>
+        <div style="font-size:.9rem;font-weight:800;margin-bottom:4px">Criar Utilizador</div>
         <div style="font-size:.74rem;color:var(--muted);margin-bottom:12px">Adicionar colaborador ao sistema</div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="u-email" type="email" placeholder="nome@centrosocialareosa.pt"></div>
           <div class="form-group"><label class="form-label">Password</label><input class="form-input" id="u-pass" type="password" placeholder="mín. 6 caracteres"></div>
         </div>
-        <div class="info-box" style="margin-bottom:12px">ℹ️ O utilizador receberá email de confirmação do Supabase.</div>
-        <button class="btn btn-primary btn-full" id="btn-criar-user" onclick="criarUtilizador()">+ Criar Utilizador</button>
+        <div class="info-box" style="margin-bottom:12px">O utilizador receberá email de confirmação do Supabase.</div>
+        <button class="btn btn-primary btn-full" id="btn-criar-user" onclick="criarUtilizador()">Criar Utilizador</button>
       </div>
 
       <div class="card">
-        <div style="font-size:.9rem;font-weight:800;margin-bottom:12px">💾 Exportar Dados</div>
+        <div style="font-size:.9rem;font-weight:800;margin-bottom:12px">Exportar Dados</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn btn-ghost" onclick="exportCSV()">⬇ Frota (CSV)</button>
-          <button class="btn btn-ghost" onclick="exportManCSV()">⬇ Manutenções (CSV)</button>
+          <button class="btn btn-ghost" onclick="exportCSV()">Frota (CSV)</button>
+          <button class="btn btn-ghost" onclick="exportManCSV()">Manutenções (CSV)</button>
         </div>
       </div>
 
       <div class="card" style="text-align:center">
-        <div style="font-size:.72rem;color:var(--muted);font-family:'JetBrains Mono',monospace;line-height:1.8">
+        <div style="font-size:.72rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;line-height:1.8">
           Centro Social da Paróquia da Areosa · IPSS<br>
           Travessa da Areosa n.º 75 · 4200-087 Porto<br>
           geral@centrosocialareosa.pt · 225 484 821<br>
@@ -751,7 +751,7 @@ tr:hover td{background:var(--surface2)}
     </div>
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="closeModal('modal-nova-viatura')">Cancelar</button>
-      <button class="btn btn-primary" id="btn-add-viat" onclick="addViatura()">💾 Guardar</button>
+      <button class="btn btn-primary" id="btn-add-viat" onclick="addViatura()">Guardar</button>
     </div>
   </div>
 </div>
@@ -780,7 +780,7 @@ tr:hover td{background:var(--surface2)}
     <div class="form-group"><label class="form-label">Notas</label><textarea class="form-textarea" id="m-notas" placeholder="Observações, peças substituídas..."></textarea></div>
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="closeModal('modal-nova-manutencao')">Cancelar</button>
-      <button class="btn btn-primary" id="btn-add-man" onclick="addManutencao()">💾 Guardar</button>
+      <button class="btn btn-primary" id="btn-add-man" onclick="addManutencao()">Guardar</button>
     </div>
   </div>
 </div>
@@ -797,21 +797,21 @@ tr:hover td{background:var(--surface2)}
     <div class="form-group">
       <label class="form-label">Urgência</label>
       <div class="urgency-selector">
-        <div class="urgency-opt" onclick="selUrg('baixa',this)">🟢 Baixa</div>
-        <div class="urgency-opt" onclick="selUrg('media',this)">🟡 Média</div>
-        <div class="urgency-opt" onclick="selUrg('alta',this)">🔴 Alta</div>
+        <div class="urgency-opt" onclick="selUrg('baixa',this)">Baixa</div>
+        <div class="urgency-opt" onclick="selUrg('media',this)">Média</div>
+        <div class="urgency-opt" onclick="selUrg('alta',this)">Alta</div>
       </div>
     </div>
     <div class="form-group"><label class="form-label">Problema *</label><input class="form-input" id="p-titulo" placeholder="ex: Barulho nos travões" autocomplete="off"></div>
     <div class="form-group"><label class="form-label">Descrição detalhada</label><textarea class="form-textarea" id="p-desc" placeholder="Descreva com o máximo de detalhe..."></textarea></div>
-    <div class="info-box">📧 Email enviado para <strong id="email-destino" style="color:var(--text)">geral@centrosocialareosa.pt</strong></div>
+    <div class="info-box">Email para <strong id="email-destino" style="color:var(--text)">geral@centrosocialareosa.pt</strong></div>
     <div id="email-preview" style="display:none;margin-top:10px">
-      <div class="section-label" style="margin-top:8px">📧 Pré-visualização do email</div>
+      <div class="section-label" style="margin-top:8px">Pré-visualização do email</div>
       <div class="email-log" id="email-preview-content" style="max-height:120px"></div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="closeModal('modal-pedido')">Cancelar</button>
-      <button class="btn btn-primary" id="btn-enviar" onclick="enviarPedido()">📧 Enviar</button>
+      <button class="btn btn-primary" id="btn-enviar" onclick="enviarPedido()">Enviar</button>
     </div>
   </div>
 </div>
@@ -824,7 +824,7 @@ tr:hover td{background:var(--surface2)}
     <div class="form-group"><label class="form-label">Km Atuais</label><input class="form-input" id="km-novo" type="number" inputmode="numeric"></div>
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="closeModal('modal-km')">Cancelar</button>
-      <button class="btn btn-primary" id="btn-save-km" onclick="saveKm()">💾 Atualizar</button>
+      <button class="btn btn-primary" id="btn-save-km" onclick="saveKm()">Atualizar</button>
     </div>
   </div>
 </div>
@@ -849,9 +849,9 @@ function applyTheme() {
   const sw = document.getElementById('dm-sw');
   if (sw) isDark ? sw.classList.add('on') : sw.classList.remove('on');
   const lb = document.getElementById('dm-lbl');
-  if (lb) lb.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+  if (lb) lb.textContent = isDark ? 'Modo claro' : 'Modo escuro';
   const mb = document.getElementById('mob-dm-btn');
-  if (mb) mb.textContent = isDark ? '☀️' : '🌙';
+  if (mb) mb.textContent = isDark ? 'Claro' : 'Escuro';
 }
 function toggleDark() { isDark = !isDark; localStorage.setItem('csa_dark', isDark ? '1' : '0'); applyTheme(); }
 applyTheme();
@@ -871,18 +871,18 @@ function setEJSStatus(ok) {
   const el = document.getElementById('ejs-status'); if (!el) return;
   if (ok) {
     el.style.cssText = 'font-size:.73rem;font-weight:600;margin-bottom:12px;padding:9px 12px;border-radius:8px;background:rgba(64,145,108,.08);border:1px solid rgba(64,145,108,.2);color:var(--success)';
-    el.textContent = '✅ EmailJS activo — emails reais';
+    el.textContent = 'EmailJS activo — emails reais';
   } else {
     el.style.cssText = 'font-size:.73rem;font-weight:600;margin-bottom:12px;padding:9px 12px;border-radius:8px;background:rgba(233,162,59,.08);border:1px solid rgba(233,162,59,.2);color:var(--warning)';
-    el.textContent = '⚠️ Não configurado — emails simulados';
+    el.textContent = 'Não configurado — emails simulados';
   }
 }
 function saveEJSConfig() {
   const s=gi('cfg-service'),t=gi('cfg-template'),p=gi('cfg-pubkey'),e=gi('cfg-email-to');
-  if (!s||!t||!p) { showToast('⚠️ Preencha todos os campos EmailJS','tw'); return; }
+  if (!s||!t||!p) { showToast('Preencha todos os campos EmailJS','tw'); return; }
   ejsCfg = { serviceId:s, templateId:t, publicKey:p, emailTo:e };
   localStorage.setItem('csa_ejs', JSON.stringify(ejsCfg));
-  try { emailjs.init(p); ejsReady = true; setEJSStatus(true); showToast('✅ EmailJS configurado!','ts'); }
+  try { emailjs.init(p); ejsReady = true; setEJSStatus(true); showToast('EmailJS configurado','ts'); }
   catch(err) { showToast('❌ '+err.message,'te'); }
   const d = document.getElementById('email-destino'); if (d) d.textContent = e;
 }
@@ -912,13 +912,13 @@ async function checkSession() {
 }
 async function criarUtilizador() {
   const email = gi('u-email'), pass = gi('u-pass');
-  if (!email || pass.length < 6) { showToast('⚠️ Email e password (mín. 6 caract.) obrigatórios','tw'); return; }
+  if (!email || pass.length < 6) { showToast('Email e password (mín. 6 caract.) obrigatórios','tw'); return; }
   const btn = document.getElementById('btn-criar-user');
   btn.textContent = 'A criar...'; btn.disabled = true;
   const { error } = await db.auth.signUp({ email, password: pass, options: { emailRedirectTo: APP_URL } });
-  btn.textContent = '+ Criar Utilizador'; btn.disabled = false;
+  btn.textContent = 'Criar Utilizador'; btn.disabled = false;
   if (error) { showToast('❌ '+error.message,'te'); return; }
-  showToast('✅ Utilizador criado! Verifique o email para activar.','ts');
+  showToast('Utilizador criado. Verifique o email para activar.','ts');
   document.getElementById('u-email').value = '';
   document.getElementById('u-pass').value = '';
 }
@@ -955,7 +955,7 @@ async function loadAll() {
     if (pR.error) throw pR.error;
     frota = vR.data||[]; manutencoes = mR.data||[]; pedidos = pR.data||[];
     setDBStatus(true);
-  } catch(e) { setDBStatus(false); showToast('⚠️ Erro Supabase: '+e.message,'te'); console.error(e); }
+  } catch(e) { setDBStatus(false); showToast('Erro Supabase: '+e.message,'te'); console.error(e); }
   hideLoad();
 }
 function setDBStatus(ok) {
@@ -978,8 +978,8 @@ function runAlertCheck() {
   log.push({ t:'h', m:`[${now()}] CSA Areosa · ${frota.length} viatura(s)` });
   frota.map(V).forEach(vt => {
     const nR = vt.uRKm + vt.ri, kL = nR - vt.km;
-    if      (kL <= 0)    { alertsCache.push({ type:'critico', emoji:'🔧', title:`Revisão VENCIDA — ${vt.mat}`, sub:`${fmt(vt.km)} km · Era aos ${fmt(nR)} km` }); warnedVehicles.add(vt.mat); log.push({ t:'b', m:`  ✖ ${vt.mat} — revisão vencida` }); }
-    else if (kL <= 1500) { alertsCache.push({ type:'proximo', emoji:'🔧', title:`Revisão próxima — ${vt.mat}`, sub:`Faltam ${fmt(kL)} km` }); warnedVehicles.add(vt.mat); log.push({ t:'w', m:`  ~ ${vt.mat} — revisão em ${fmt(kL)} km` }); }
+    if      (kL <= 0)    { alertsCache.push({ type:'critico', emoji:'man.', title:`Revisão VENCIDA — ${vt.mat}`, sub:`${fmt(vt.km)} km · Era aos ${fmt(nR)} km` }); warnedVehicles.add(vt.mat); log.push({ t:'b', m:`  ✖ ${vt.mat} — revisão vencida` }); }
+    else if (kL <= 1500) { alertsCache.push({ type:'proximo', emoji:'man.', title:`Revisão próxima — ${vt.mat}`, sub:`Faltam ${fmt(kL)} km` }); warnedVehicles.add(vt.mat); log.push({ t:'w', m:`  ~ ${vt.mat} — revisão em ${fmt(kL)} km` }); }
     else                  log.push({ t:'o', m:`  ✓ ${vt.mat} — km OK (faltam ${fmt(kL)} km)` });
     if (vt.seg) {
       const d = dDiff(today, vt.seg);
@@ -1010,13 +1010,13 @@ function runAlertCheck() {
   // render
   renderAlerts('todos'); renderAlertLog(); renderDashAlerts(); renderDashStats();
   document.getElementById('crit-banner').innerHTML = nC > 0
-    ? `<div class="banner banner-crit">⚠️ ${nC} alerta${nC>1?'s':''} crítico${nC>1?'s':''} requer${nC>1?'em':''} atenção imediata</div>` : '';
+    ? `<div class="banner banner-crit">${nC} alerta${nC>1?'s':''} crítico${nC>1?'s':''} requer${nC>1?'em':''} atenção imediata</div>` : '';
 }
 function dDiff(f, t) { return Math.ceil((new Date(t) - f) / 86400000); }
 function renderAlerts(filter) {
   const el = document.getElementById('alert-container'); if (!el) return;
   const arr = filter==='todos' ? alertsCache.filter(a=>a.type!=='ok') : alertsCache.filter(a=>a.type===filter);
-  if (!arr.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">✅</div><div class="empty-text">Tudo em dia nesta categoria!</div></div>'; return; }
+  if (!arr.length) { el.innerHTML = '<div class="empty-state"><div class="empty-text">Tudo em dia nesta categoria!</div></div>'; return; }
   el.innerHTML = arr.map(a=>`<div class="alert-item ${a.type==='critico'?'crit':a.type==='ok'?'aok':''}"><div class="alert-emoji">${a.emoji}</div><div class="alert-body"><div class="alert-title">${a.title}</div><div class="alert-sub">${a.sub}</div></div><span class="abadge ${a.type==='critico'?'bc':a.type==='ok'?'bo':'bw'}">${a.type==='critico'?'CRÍTICO':a.type==='ok'?'OK':'ATENÇÃO'}</span></div>`).join('');
 }
 function renderAlertLog() {
@@ -1029,7 +1029,7 @@ function renderDashAlerts() {
     const arr = (i===0 ? alertsCache.filter(a=>a.type==='critico') : alertsCache.filter(a=>a.type==='proximo')).slice(0,3);
     el.innerHTML = arr.length
       ? arr.map(a=>`<div class="alert-item ${a.type==='critico'?'crit':''}"><div class="alert-emoji">${a.emoji}</div><div class="alert-body"><div class="alert-title">${a.title}</div><div class="alert-sub">${a.sub}</div></div><span class="abadge ${a.type==='critico'?'bc':'bw'}">${a.type==='critico'?'CRÍTICO':'ATENÇÃO'}</span></div>`).join('')
-      : '<div class="alert-item aok"><div class="alert-emoji">✅</div><div class="alert-body"><div class="alert-title">Sem alertas</div></div></div>';
+      : '<div class="alert-item aok"><div class="alert-type-dot"></div><div class="alert-body"><div class="alert-title">Sem alertas</div></div></div>';
   });
 }
 function renderDashStats() {
@@ -1037,11 +1037,15 @@ function renderDashStats() {
   const nP = pedidos.filter(p=>p.status==='pendente').length;
   const tot = manutencoes.reduce((s,m)=>s+(parseFloat(m.custo)||0), 0);
   const el = document.getElementById('dash-stats'); if (!el) return;
+  const _iVan  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v5"/><path d="M14 17H9m10.5 0a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM6.5 17a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/></svg>`;
+  const _iWarn = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+  const _iList = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>`;
+  const _iEuro = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17"><path d="M4 10h12M4 14h12"/><path d="M19 7A7 7 0 105 12"/></svg>`;
   el.innerHTML = `
-    <div class="stat-card sc-green"><div class="stat-top"><div class="stat-icon si-g">🚐</div><span class="stat-trend tr-ok">ATIVO</span></div><div class="stat-val">${frota.length}</div><div class="stat-label">Viaturas</div></div>
-    <div class="stat-card sc-red"><div class="stat-top"><div class="stat-icon si-r">⚠️</div><span class="stat-trend ${nC>0?'tr-bad':'tr-ok'}">${nC>0?'URGENTE':'OK'}</span></div><div class="stat-val">${nC}</div><div class="stat-label">Alertas Críticos</div></div>
-    <div class="stat-card sc-orange"><div class="stat-top"><div class="stat-icon si-o">📋</div><span class="stat-trend ${nP>0?'tr-warn':'tr-ok'}">${nP>0?'PEND.':'OK'}</span></div><div class="stat-val">${nP}</div><div class="stat-label">Pedidos Abertos</div></div>
-    <div class="stat-card sc-teal"><div class="stat-top"><div class="stat-icon si-t">💶</div><span class="stat-trend tr-ok">TOTAL</span></div><div class="stat-val">${tot.toLocaleString('pt-PT')}€</div><div class="stat-label">Custo Manutenção</div></div>`;
+    <div class="stat-card sc-green"><div class="stat-top"><div class="stat-icon si-g">${_iVan}</div><span class="stat-trend tr-ok">ATIVO</span></div><div class="stat-val">${frota.length}</div><div class="stat-label">Viaturas</div></div>
+    <div class="stat-card sc-red"><div class="stat-top"><div class="stat-icon si-r">${_iWarn}</div><span class="stat-trend ${nC>0?'tr-bad':'tr-ok'}">${nC>0?'URGENTE':'OK'}</span></div><div class="stat-val">${nC}</div><div class="stat-label">Alertas Críticos</div></div>
+    <div class="stat-card sc-orange"><div class="stat-top"><div class="stat-icon si-o">${_iList}</div><span class="stat-trend ${nP>0?'tr-warn':'tr-ok'}">${nP>0?'PENDENTE':'OK'}</span></div><div class="stat-val">${nP}</div><div class="stat-label">Pedidos Abertos</div></div>
+    <div class="stat-card sc-teal"><div class="stat-top"><div class="stat-icon si-t">${_iEuro}</div><span class="stat-trend tr-ok">TOTAL</span></div><div class="stat-val">${tot.toLocaleString('pt-PT')}€</div><div class="stat-label">Custo Manutenção</div></div>`;
   const d = document.getElementById('dash-desc');
   if (d) d.textContent = `Centro Social da Areosa · ${new Date().toLocaleDateString('pt-PT',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}`;
 }
@@ -1065,12 +1069,12 @@ function renderFrota() {
       <td><span class="mat-badge">${vt.mat}</span></td>
       <td style="font-size:.78rem;font-weight:500;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${vt.modelo}</td>
       <td><div class="km-bar-wrap"><div class="km-bar"><div class="km-fill ${kC}" style="width:${Math.min(100,pct)}%"></div></div><span class="km-text">${fmt(vt.km)}</span></div></td>
-      <td style="font-size:.68rem;font-family:'JetBrains Mono',monospace;white-space:nowrap">${fmt(nR)} km</td>
+      <td style="font-size:.68rem;font-family:'IBM Plex Mono',monospace;white-space:nowrap">${fmt(nR)} km</td>
       <td>${sB}</td><td>${iB}</td>
-      <td><span class="status-dot"><span class="dot d${est}"></span>${est==='ok'?'OK':est==='warn'?'Atenção':'Crítico'}</span></td>
+      <td><span class="status-dot"><span class="dot d${est}"></span>${est==='ok'?'Normal':est==='warn'?'Atenção':'Crítico'}</span></td>
       <td style="white-space:nowrap">
-        <button class="km-btn" onclick="openKmModal('${vt.mat}')">📍 km</button>
-        <button class="act-btn" onclick="openManFor('${vt.mat}')">🔧</button>
+        <button class="km-btn" onclick="openKmModal('${vt.mat}')">km</button>
+        <button class="act-btn" onclick="openManFor('${vt.mat}')">man.</button>
         <button class="del-btn" onclick="delViatura('${vt.mat}')">✕</button>
       </td>
     </tr>`;
@@ -1081,13 +1085,13 @@ async function addViatura() {
   const km = parseInt(gi('f-km'))||0, ri = parseInt(gi('f-rev-int'))||10000;
   const seg = gi('f-seguro')||null, ins = gi('f-insp')||null;
   const uRK = parseInt(gi('f-urev-km'))||km, uRD = gi('f-urev-data')||null;
-  if (!mat||!modelo) { showToast('⚠️ Matrícula e modelo obrigatórios','tw'); return; }
+  if (!mat||!modelo) { showToast('Matrícula e modelo obrigatórios','tw'); return; }
   const btn = document.getElementById('btn-add-viat'); btn.textContent='A guardar...'; btn.disabled=true;
   const { error } = await db.from('viaturas').insert({ matricula:mat, modelo, km_atuais:km, intervalo_revisao_km:ri, seguro_valido_ate:seg, inspecao_valida_ate:ins, km_ultima_revisao:uRK, data_ultima_revisao:uRD });
-  btn.textContent='💾 Guardar'; btn.disabled=false;
+  btn.textContent='Guardar'; btn.disabled=false;
   if (error) { showToast('❌ '+error.message,'te'); return; }
   await loadAll(); renderFrota(); runAlertCheck();
-  closeModal('modal-nova-viatura'); showToast('✅ Viatura '+mat+' guardada!','ts');
+  closeModal('modal-nova-viatura'); showToast('Viatura '+mat+' guardada','ts');
   ['f-mat','f-modelo','f-km','f-rev-int','f-seguro','f-insp','f-urev-km','f-urev-data'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
   document.getElementById('f-rev-int').value='10000';
 }
@@ -1096,7 +1100,7 @@ async function delViatura(mat) {
   const { error } = await db.from('viaturas').delete().eq('matricula', mat);
   if (error) { showToast('❌ '+error.message,'te'); return; }
   await loadAll(); renderFrota(); runAlertCheck();
-  showToast('🗑️ Viatura '+mat+' removida','tw');
+  showToast('Viatura '+mat+' removida','tw');
 }
 
 /* ═══════════════════════════════════════════
@@ -1112,13 +1116,13 @@ function openKmModal(mat) {
 }
 async function saveKm() {
   const val = parseInt(document.getElementById('km-novo').value);
-  if (!val || val < 0) { showToast('⚠️ Valor inválido','tw'); return; }
+  if (!val || val < 0) { showToast('Valor inválido','tw'); return; }
   const btn = document.getElementById('btn-save-km'); btn.textContent='A guardar...'; btn.disabled=true;
   const { error } = await db.from('viaturas').update({ km_atuais:val, updated_at:new Date().toISOString() }).eq('matricula', kmTarget);
-  btn.textContent='💾 Atualizar'; btn.disabled=false;
+  btn.textContent='Atualizar'; btn.disabled=false;
   if (error) { showToast('❌ '+error.message,'te'); return; }
   await loadAll(); renderFrota(); runAlertCheck();
-  closeModal('modal-km'); showToast('✅ Km atualizados — '+kmTarget,'ts');
+  closeModal('modal-km'); showToast('Km actualizados — '+kmTarget,'ts');
 }
 
 /* ═══════════════════════════════════════════
@@ -1129,7 +1133,7 @@ function renderManutencoesHist(filter) {
   const arr = filter === 'todas' ? mList : mList.filter(m => m.mat === filter);
   const el = document.getElementById('hist-list'); if (!el) return;
   el.innerHTML = !arr.length
-    ? '<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-text">Sem registos de manutenção</div></div>'
+    ? '<div class="empty-state"><div class="empty-text">Sem registos de manutenção</div></div>'
     : arr.map(m=>`<div class="h-item"><div class="h-tl"><div class="h-dot ${m.tipo==='corr'?'bad':''}"></div><div class="h-line"></div></div><div class="h-body"><div class="h-title">${m.desc}</div><div class="h-meta">${fd(m.data)} · ${m.mat} · ${fmt(m.km)} km</div>${m.notas?`<div style="font-size:.64rem;color:var(--muted);margin-top:2px;font-style:italic">${m.notas}</div>`:''}<span class="h-type ${m.tipo==='prev'?'tp':'tc'}">${m.tipo==='prev'?'Preventiva':'Corretiva'}</span></div><div class="h-cost">${m.custo?m.custo+'€':'—'}</div></div>`).join('');
   // custo chart
   const ce = document.getElementById('custos-chart');
@@ -1140,7 +1144,7 @@ function renderManutencoesHist(filter) {
       <div class="card card-sm" style="margin-bottom:8px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
           <span style="font-size:.78rem;font-weight:700">${mat}</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.9rem">${c.toLocaleString('pt')}€</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-weight:800;font-size:.9rem">${c.toLocaleString('pt')}€</span>
         </div>
         <div class="km-bar" style="height:5px"><div class="km-fill ${c/maxC>.8?'warn':''}" style="width:${Math.round(c/maxC*100)}%"></div></div>
       </div>`).join('') || '<div style="color:var(--muted);font-size:.78rem">Sem dados</div>';
@@ -1159,10 +1163,10 @@ async function addManutencao() {
   const mat = document.getElementById('m-mat').value, desc = gi('m-desc'), data = gi('m-data');
   const km = parseInt(gi('m-km'))||0, cust = parseFloat(gi('m-custo'))||0, nota = gi('m-notas');
   const tipo = document.querySelector('input[name="tipo"]:checked')?.value || 'prev';
-  if (!desc||!data) { showToast('⚠️ Preencha descrição e data','tw'); return; }
+  if (!desc||!data) { showToast('Preencha descrição e data','tw'); return; }
   const btn = document.getElementById('btn-add-man'); btn.textContent='A guardar...'; btn.disabled=true;
   const { error } = await db.from('manutencoes').insert({ matricula:mat, descricao:desc, data_intervencao:data, km_momento:km, custo:cust, tipo, notas:nota, created_by:currentUser?.email });
-  btn.textContent='💾 Guardar'; btn.disabled=false;
+  btn.textContent='Guardar'; btn.disabled=false;
   if (error) { showToast('❌ '+error.message,'te'); return; }
   // update km if larger
   if (km > 0) {
@@ -1174,7 +1178,7 @@ async function addManutencao() {
     }
   }
   await loadAll(); renderManutencoesHist('todas'); renderFrota(); renderDashManutencoes(); runAlertCheck();
-  closeModal('modal-nova-manutencao'); showToast('✅ Manutenção guardada!','ts');
+  closeModal('modal-nova-manutencao'); showToast('Manutenção guardada','ts');
   ['m-desc','m-km','m-custo','m-notas'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
 }
 function renderDashManutencoes() {
@@ -1184,7 +1188,7 @@ function renderDashManutencoes() {
       <td><span class="mat-badge">${m.mat}</span></td>
       <td style="max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${m.desc}</td>
       <td style="white-space:nowrap">${fd(m.data)}</td>
-      <td style="font-family:'JetBrains Mono',monospace;font-weight:700;white-space:nowrap">${m.custo?m.custo+'€':'—'}</td>
+      <td style="font-family:'IBM Plex Mono',monospace;font-weight:700;white-space:nowrap">${m.custo?m.custo+'€':'—'}</td>
       <td><span class="h-type ${m.tipo==='prev'?'tp':'tc'}">${m.tipo==='prev'?'Prev.':'Corr.'}</span></td>
     </tr>`).join('');
 }
@@ -1202,8 +1206,8 @@ async function enviarPedido() {
   const matRaw = document.getElementById('p-mat').value;
   const titulo = gi('p-titulo'), desc = gi('p-desc'), data = gi('p-data')||todayISO();
   const urg = urgSelected || 'media';
-  if (!titulo) { showToast('⚠️ Descreva o problema','tw'); return; }
-  const btn = document.getElementById('btn-enviar'); btn.textContent='🤖 A gerar...'; btn.disabled=true;
+  if (!titulo) { showToast('Descreva o problema','tw'); return; }
+  const btn = document.getElementById('btn-enviar'); btn.textContent='A gerar email...'; btn.disabled=true;
   const mat = matRaw.split(' ')[0];
   const vt = frota.find(x=>x.matricula===mat) || {};
   const urgLabel = { alta:'🔴 ALTA — Urgente', media:'🟡 MÉDIA', baixa:'🟢 BAIXA' }[urg];
@@ -1230,17 +1234,17 @@ async function enviarPedido() {
         descricao:desc||'—', data:fd(data), autor:currentUser?.email||'',
         email_body:emailBody, app_url:APP_URL
       });
-      sent = true; showToast('📧 Email enviado para '+ejsCfg.emailTo+'!','ts');
-    } catch(err) { showToast('⚠️ EmailJS: '+(err.text||err.message),'tw'); }
-  } else { showToast('📧 Email gerado (configura EmailJS para envio real)','tw'); }
+      sent = true; showToast('Email para '+ejsCfg.emailTo+'!','ts');
+    } catch(err) { showToast('EmailJS: '+(err.text||err.message),'tw'); }
+  } else { showToast('Email gerado (configura EmailJS para envio real)','tw'); }
   const { error } = await db.from('pedidos').insert({
     matricula:mat, titulo, descricao:desc, urgencia:urg,
     data_reporte:data, reportado_por:currentUser?.email||'Colaborador',
     status:'pendente', email_enviado:sent
   });
-  if (error) showToast('⚠️ Erro ao guardar pedido: '+error.message,'te');
+  if (error) showToast('Erro ao guardar pedido: '+error.message,'te');
   else { await loadAll(); renderPedidos(); runAlertCheck(); }
-  btn.textContent='📧 Enviar'; btn.disabled=false;
+  btn.textContent='Enviar'; btn.disabled=false;
   setTimeout(()=>{
     closeModal('modal-pedido');
     ['p-titulo','p-desc','p-data'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
@@ -1254,7 +1258,7 @@ function emailFallback(mat, titulo, desc, urgLabel, data) {
 function renderPedidos() {
   const el = document.getElementById('pedidos-list'); if (!el) return;
   const pList = pedidos.map(Pe);
-  if (!pList.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-text">Sem pedidos de manutenção</div></div>'; return; }
+  if (!pList.length) { el.innerHTML = '<div class="empty-state"><div class="empty-text">Sem pedidos de manutenção</div></div>'; return; }
   const sC = { pendente:'sp', 'em-progresso':'spg', fechado:'sf' };
   const sT = { pendente:'Pendente', 'em-progresso':'Em progresso', fechado:'Fechado' };
   el.innerHTML = pList.map(p=>`
@@ -1267,7 +1271,7 @@ function renderPedidos() {
         <div class="pedido-footer">
           <span class="pedido-date">${fd(p.data)} · ${p.autor}</span>
           <span class="ped-status ${sC[p.status]||'sp'}">${sT[p.status]||p.status}</span>
-          ${p.sent ? '<span style="font-size:.59rem;color:var(--success)">📧 enviado</span>' : '<span style="font-size:.59rem;color:var(--muted)">📧 simulado</span>'}
+          ${p.sent ? '<span style="font-size:.59rem;color:var(--success)">Enviado</span>' : '<span style="font-size:.59rem;color:var(--muted)">Simulado</span>'}
           <div class="pedido-actions">
             ${p.status==='pendente'?`<button class="act-btn" onclick="setPedStatus('${p.id}','em-progresso')">Aceitar</button>`:''}
             ${p.status!=='fechado'?`<button class="act-btn" onclick="setPedStatus('${p.id}','fechado')">Fechar</button>`:''}
@@ -1280,7 +1284,7 @@ async function setPedStatus(id, status) {
   const { error } = await db.from('pedidos').update({ status, updated_at:new Date().toISOString() }).eq('id', id);
   if (error) { showToast('❌ '+error.message,'te'); return; }
   await loadAll(); renderPedidos(); runAlertCheck();
-  showToast('✅ Pedido actualizado: '+status,'ts');
+  showToast('Pedido actualizado: '+status,'ts');
 }
 
 /* ═══════════════════════════════════════════
@@ -1289,12 +1293,12 @@ async function setPedStatus(id, status) {
 function exportCSV() {
   let c = 'Matrícula,Modelo,Km Atuais,Seguro válido até,Inspeção válida até,Próx. Revisão (km)\n';
   frota.forEach(vt => { const nR=(vt.km_ultima_revisao||0)+(vt.intervalo_revisao_km||10000); c+=`"${vt.matricula}","${vt.modelo}",${vt.km_atuais},"${vt.seguro_valido_ate||''}","${vt.inspecao_valida_ate||''}",${nR}\n`; });
-  dl('csa_frota_'+todayISO()+'.csv', c, 'text/csv'); showToast('⬇ CSV exportado!','ts');
+  dl('csa_frota_'+todayISO()+'.csv', c, 'text/csv'); showToast('Exportar CSV exportado!','ts');
 }
 function exportManCSV() {
   let c = 'Matrícula,Descrição,Data,Km,Custo (€),Tipo,Notas\n';
   manutencoes.forEach(m => { c+=`"${m.matricula}","${m.descricao}","${m.data_intervencao}",${m.km_momento||0},${m.custo||0},"${m.tipo}","${m.notas||''}"\n`; });
-  dl('csa_manutencoes_'+todayISO()+'.csv', c, 'text/csv'); showToast('⬇ CSV exportado!','ts');
+  dl('csa_manutencoes_'+todayISO()+'.csv', c, 'text/csv'); showToast('Exportar CSV exportado!','ts');
 }
 function dl(n, c, t) { const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([c],{type:t})); a.download=n; a.click(); }
 
